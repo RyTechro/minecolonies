@@ -330,7 +330,7 @@ public class ClientRegistryHandler
         ItemProperties.register(ModItems.spear, new ResourceLocation("throwing"), (item, world, entity, light) ->
                                                                            (entity != null && entity.isUsingItem() && entity.getUseItem() == item) ? 1.0F : 0.0F);
         ItemProperties.register(ModItems.buildGoggles, new ResourceLocation("disabled"), (item, world, entity, light) ->
-                (ColonyBlueprintRenderer.willRenderBlueprints() ? 0.0F : 1.0F));
+                (ColonyBlueprintRenderer.renderBlueprintType() > 0 ? 0.0F : 1.0F));
     }
 
     @OnlyIn(Dist.CLIENT)

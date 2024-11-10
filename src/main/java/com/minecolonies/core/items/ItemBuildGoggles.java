@@ -49,8 +49,11 @@ public class ItemBuildGoggles extends ArmorItem
                                 .withStyle(ChatFormatting.DARK_PURPLE, ChatFormatting.ITALIC))
                 .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
 
-        components.add(Component.translatable(ColonyBlueprintRenderer.willRenderBlueprints()
-                ? "item.minecolonies.build_goggles.enabled" : "item.minecolonies.build_goggles.disabled")
-                .withStyle(ChatFormatting.GRAY));
+        int type = ColonyBlueprintRenderer.renderBlueprintType();
+        net.minecraft.network.chat.MutableComponent trans = Component.translatable(type > 0 ? "item.minecolonies.build_goggles.enabled" : "item.minecolonies.build_goggles.disabled");
+
+        trans.append(" "+type);
+
+        components.add(trans.withStyle(ChatFormatting.GRAY));
     }
 }
